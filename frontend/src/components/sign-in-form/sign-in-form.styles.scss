@@ -1,0 +1,38 @@
+.signin-container{
+    display: flex;
+    justify-content: space-between;
+    max-width:800px;
+    margin:30px auto;
+    padding: 20px;
+
+    @media screen and (max-width:640px) {
+        flex-direction: column;
+     }
+    .sign-in-content{
+        @media screen and (max-width:640px) {
+            width: 100%;
+         }
+    }
+}
+.sign-up-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+    @media screen and (max-width:640px) {
+        width: 100%;
+        max-width: inherit;
+        margin-top: 20px;
+     }
+
+    h2{
+        margin: 10px 0;
+    }
+    .buttons-container{
+        display: flex;
+        justify-content: space-between;
+
+        button{
+            width: 100%;
+        }
+    }
+}
