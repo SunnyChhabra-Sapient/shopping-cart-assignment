@@ -67,9 +67,6 @@ const SignUpForm = () => {
                     navigate('/');
                 }}
  
-                // onChange={(fields) => {
-                //     console.log(fields.firstName)
-                // }}
                 render={({ errors, status, touched }) => (
                     <Form>
                         

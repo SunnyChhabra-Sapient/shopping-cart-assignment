@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import Button from "../button/button.component";
-import FormInput from "../form-input/form-input.component";
-// import { UserContext } from "../../context/user.context";
-
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { useNavigate } from "react-router-dom";
 import './sign-in-form.styles.scss';
 
 const defaultFormFields = {
@@ -13,18 +13,13 @@ const defaultFormFields = {
 const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
-    // const {setCurrentUser} = useContext(UserContext);
+    const navigate = useNavigate()
 
-    // console.log(formFields);
     const handleChange = (event) => {
         const { name, value } = event.target;
 
         setFormFields({ ...formFields, [name]: value })
     }
-
-
-
-
 
     return (
         <>
@@ -34,22 +29,44 @@ const SignInForm = () => {
                 <span>Get access to your Orders, Wishlist and Recommendations</span>
             </section>
             <section className="sign-up-container" aria-label="Sign In Form">
-                <form >
-                    <FormInput aria-label="Email" label="Email" type="email" name="email" required onChange={handleChange} value={email} />
-                    <FormInput aria-label="Password" label="Password" type="password" name="password" required onChange={handleChange} value={password} />
-                    {/* <label>Display Name</label>
-                <input type="text" name="displayName" required onChange={handleChange} value={displayName}/>
-                <label>Email</label>
-                <input type="email" name="email" required onChange={handleChange} value={email}/>
-                <label>Password</label>
-                <input type="password" name="password" required onChange={handleChange} value={password}/>
-                <label>Confirm Password</label>
-                <input type="password" name="confirmPassword" required onChange={handleChange} value={confirmPassword}/> */}
-                    <div className="buttons-container">
-                        <Button buttonType="primary" aria-label="Sign In Button" type="submit">Login</Button>
-                        {/* <Button aria-label="Google SignIn Button" type="button" buttonType="google" onClick={signInWithGoogle}>Google sign in</Button> */}
-                    </div>
-                </form>
+            <Formik
+                initialValues={{
+                    email: '',
+                    password: ''
+                }}
+                validationSchema={Yup.object().shape({
+
+                    email: Yup.string()
+                        .email('Email is invalid')
+                        .required('Email is required'),
+                    password: Yup.string()
+                        .required('Password is required'),
+                })}
+                onSubmit={(fields, { resetForm }) => {
+                    alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
+                        resetForm({fields:''});
+                    navigate('/');
+                }}
+ 
+                render={({ errors, status, touched }) => (
+                    <Form>
+                    
+                        <div className="group">
+                        <Field name="email" onKeyUp={handleChange} type="text" className={'form-input' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                            <label aria-label="Email" htmlFor="email" className={`${email.length ? 'shrink':''} form-input-label`}>Email</label>
+                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                        </div>
+                        <div className="group">
+                            <Field name="password"  type="password"  onKeyUp={handleChange} className={'form-input' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                            <label aria-label="Passord" htmlFor="password" className={`${password.length ? 'shrink':''} form-input-label`}>Password</label>
+                            <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                        </div>
+                       
+                            <Button  buttonType="primary" aria-label="Signup Button" type="submit">Sign In</Button>
+
+                    </Form>
+                )}
+            />
             </section>
         </section>
         </>

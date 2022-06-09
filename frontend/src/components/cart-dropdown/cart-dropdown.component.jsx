@@ -55,7 +55,7 @@ const CartDropdown = () => {
                             </>
                         )
                         :  (
-                            <button to="/shop" className='lnkButton' aria-label='Start Shopping Button' onClick={handleCartClose}>Start Shopping</button>
+                            <button  aria-pressed="false"  className='lnkButton' aria-label='Start Shopping Button' onClick={handleCartClose}>Start Shopping</button>
                         )
                     }
                     </footer>
