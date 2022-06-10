@@ -2,6 +2,7 @@ import {lazy, Suspense} from 'react';
 import {Route, Routes } from 'react-router-dom';
 import Footer from "./components/footer/footer.component";
 import Spinner from './components/spinner/spinner.component';
+import NotFound from './components/not-found/not-found.component';
 
 const Home = lazy(()=> import('./routes/home/home.component'));
 const Navigation = lazy(()=> import('./routes/navigation/navigation.component'));
@@ -22,6 +23,7 @@ function App() {
         <Route path="product/:id" element ={<Category />} />
         <Route path="sign-in" element ={<SignInForm />} />
         <Route path="register" element ={<SignUpForm />} />
+        <Route path="*" element ={<NotFound />} />
       </Route>
       
     </Routes>

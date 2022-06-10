@@ -1,0 +1,36 @@
+.page_404 {
+    background: #fff;
+    font-family: "Dosis", sans-serif;
+    text-align: center;
+    min-height: 100%;
+    margin-bottom: 10%;
+
+    h1{
+        font-size: 100px;
+        margin-bottom: 20px;
+    }
+    .contant_box_404{
+        .h2{
+            font-size: 24px;
+            margin: 15px;
+        }
+        p{
+            margin: 10px;
+            font-size: 18px;
+        }
+        .lnkButton{
+            background-color: #bf2957;
+            color: white;
+            max-width: 165px;
+            letter-spacing: 0.5px;
+            padding: 10px 40px;
+            font-size: 15px;
+            font-family: "Dosis", sans-serif;
+            border: none;
+            margin-top: 20px;
+            display: block;
+            margin: 15px auto;
+          }
+    }
+
+}

@@ -52,12 +52,12 @@ const SignInForm = () => {
                     <Form>
                     
                         <div className="group">
-                        <Field name="email" onKeyUp={handleChange} type="text" className={'form-input' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                        <Field placeholder="" name="email" onKeyUp={handleChange} type="text" className={'form-input' + (errors.email && touched.email ? ' is-invalid' : '')} />
                             <label aria-label="Email" htmlFor="email" className={`${email.length ? 'shrink':''} form-input-label`}>Email</label>
                             <ErrorMessage name="email" component="div" className="invalid-feedback" />
                         </div>
                         <div className="group">
-                            <Field name="password"  type="password"  onKeyUp={handleChange} className={'form-input' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                            <Field placeholder="" name="password"  type="password"  onKeyUp={handleChange} className={'form-input' + (errors.password && touched.password ? ' is-invalid' : '')} />
                             <label aria-label="Passord" htmlFor="password" className={`${password.length ? 'shrink':''} form-input-label`}>Password</label>
                             <ErrorMessage name="password" component="div" className="invalid-feedback" />
                         </div>
